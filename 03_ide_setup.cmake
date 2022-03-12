@@ -41,7 +41,12 @@ elseif(OS_TARGET STREQUAL mac)
 elseif(OS_TARGET STREQUAL linux)
 
     create_missing_cmake_build_type()
-    if( CMAKE_BUILD_TYPE STREQUAL Debug)
+    if (CMAKE_BUILD_TYPE STREQUAL Release)
+        add_definitions(-DNDEBUG)
+        add_compile_options(-O3) # -fsanitize=address
+        #SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address -static-libasan")
+        
+    elseif( CMAKE_BUILD_TYPE STREQUAL Debug)
         add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
         #add_linker_flag_global(-fsanitize=address -static-libasan)
         SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address -static-libasan")
