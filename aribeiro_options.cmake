@@ -2,7 +2,7 @@
 # Compile with fast rsqrt
 ############################################################################
 
-set( ARIBEIRO_RSQRT_MODE TryFindPackageFirst CACHE STRING "Use the rsqrt special implementation." )
+set( ARIBEIRO_RSQRT_MODE STDLIB CACHE STRING "Use the rsqrt special implementation." )
 set_property(CACHE ARIBEIRO_RSQRT_MODE PROPERTY STRINGS STDLIB SSE2 CARMACK)
 
 if(ARIBEIRO_RSQRT_MODE STREQUAL SSE2)
