@@ -22,6 +22,8 @@ if(OS_TARGET STREQUAL win)
                 string(REGEX REPLACE "/MD" "/MT" ${flag} "${${flag}}")
                 SET ( ${flag} "${${flag}}" CACHE STRING "" FORCE)
             endif()
+            set("${flag}" "${${flag}} /MP")
+            #message(STATUS "${${flag}}")
         endforeach()
     endif()
 
