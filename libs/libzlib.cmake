@@ -33,7 +33,7 @@ if(LIB_ZLIB STREQUAL FromSource)
     # allow prefix path to search zlib
     #PARENT_SCOPE
     set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}" "${ARIBEIRO_GEN_INCLUDE_DIR}/zlib/")
-    set(ZLIB_INCLUDE_DIR "${ARIBEIRO_GEN_INCLUDE_DIR}/zlib/")
+    #set(ZLIB_INCLUDE_DIR "${ARIBEIRO_GEN_INCLUDE_DIR}/zlib/")
     
 
 elseif(LIB_ZLIB STREQUAL UsingFindPackage)
