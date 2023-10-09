@@ -7,7 +7,7 @@ if(OS_TARGET STREQUAL win)
         create_missing_cmake_build_type()
         if (CMAKE_BUILD_TYPE STREQUAL Release)
             add_definitions(-DNDEBUG)
-            add_compile_options(-O3)
+            add_compile_options(-O3 -fno-strict-aliasing)
         endif()
     elseif(MSVC)
         # change the multithread debug DLL to multithread debug static compilation
@@ -32,7 +32,7 @@ elseif(OS_TARGET STREQUAL mac)
     create_missing_cmake_build_type()
     if (CMAKE_BUILD_TYPE STREQUAL Release)
         add_definitions(-DNDEBUG)
-        add_compile_options(-O3)
+        add_compile_options(-O3 -fno-strict-aliasing)
     endif()
 
     #SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -all_load")
@@ -45,7 +45,7 @@ elseif(OS_TARGET STREQUAL linux)
     create_missing_cmake_build_type()
     if (CMAKE_BUILD_TYPE STREQUAL Release)
         add_definitions(-DNDEBUG)
-        add_compile_options(-O3) # -fsanitize=address
+        add_compile_options(-O3 -fno-strict-aliasing) # -fsanitize=address
         #SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address -static-libasan")
         
     elseif( CMAKE_BUILD_TYPE STREQUAL Debug)
@@ -58,7 +58,7 @@ elseif(OS_TARGET STREQUAL android)
 
     add_compile_options(
         -fexceptions
-        -O3
+        -O3 -fno-strict-aliasing
         -ftree-vectorize
         -Wall
         -Wno-parentheses
